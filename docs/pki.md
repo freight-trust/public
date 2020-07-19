@@ -1,12 +1,12 @@
 # Contents
 
-  - PKI
+- PKI
 
-  - Incident Response Plan
+- Incident Response Plan
 
-  - Safety and Continuity
+- Safety and Continuity
 
-  - Defects
+- Defects
 
 # PKI
 
@@ -20,12 +20,11 @@ Corporate uses curve25519, Employees use RSA
 
 </div>
 
-Key ID 078925C299F4351B Algorithm EdDSA (Sign only) Length PGP
-Fingerprint 9847 1DE5 F89C 5B2C 246E 6A58 0789 25C2 99F4 351B
+Key ID 078925C299F4351B Algorithm EdDSA (Sign only) Length PGP Fingerprint 9847
+1DE5 F89C 5B2C 246E 6A58 0789 25C2 99F4 351B
 
-  - Encrypt Only Key ID 4A9A618D992E1189 Algorithm ECDH (Encrypt only)
-    Length PGP Fingerprint D78C 073F 0467 0A2B 2E91 D036 4A9A 618D 992E
-    1189 ---
+- Encrypt Only Key ID 4A9A618D992E1189 Algorithm ECDH (Encrypt only) Length PGP
+  Fingerprint D78C 073F 0467 0A2B 2E91 D036 4A9A 618D 992E 1189 ---
 
 <div class="note">
 
@@ -35,8 +34,7 @@ Fingerprint 9847 1DE5 F89C 5B2C 246E 6A58 0789 25C2 99F4 351B
 
 pub rsa4096 2020-06-04 \[SC\] \[expires: 2024-06-04\]
 858023A92C8DA82FB996BB37361D5A506F6EB43E uid \[ultimate\] sam bacha
-\<<sam@freighttrust.com>\> sub rsa4096 2020-06-04 \[E\] \[expires:
-2024-06-04\]
+\<<sam@freighttrust.com>\> sub rsa4096 2020-06-04 \[E\] \[expires: 2024-06-04\]
 
 BFC5 0E69 46A2 C69A C56C  3F25 E6D9 D510 8DFF FDF8
 C00B 2090 F23C 5629 0291  11CB F5D2 A721 6C51 FB94 sam bacha
@@ -129,5 +127,5 @@ SE4RuzOtaHwuxnnjoC0bVWWK+QZpGsdoNdXL+aTsrSBPyOEvvoGKdhejSpwJUjwK
 h8e6GXhjrk7jneKArb6EgZsUhQrPdE4ddyDBZYcY17Oq5QJE1B9CFg14MqLjyx3G
 l1ONfW9OFGDECuvtntF4cM7alBpovcOYAIZ1j/fHLLlY+Hp+U18fjvBiG9bLEf/8
 e9kTbjdXApm0mKbps2C2tsN3j7w8+RQc29KwSPbP56xb/wDLt+FviHiqhvcPKd7c
-gr7zKGR9L+SXLSqId7Dtwf0EiXs/GVrGAeIAOKdIA3agMiINW0FfPSsYOHfP =LdHK
------END PGP PUBLIC KEY BLOCK-----
+gr7zKGR9L+SXLSqId7Dtwf0EiXs/GVrGAeIAOKdIA3agMiINW0FfPSsYOHfP =LdHK -----END PGP
+PUBLIC KEY BLOCK-----
