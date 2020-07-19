@@ -83,7 +83,7 @@ repos:
   description: Terraform
   url: https://github.com/freight-trust/Infrastructure
 
-- name: RFC's and Netwokr Improvements
+- name: Proposals
   description: EIP/RFC's
   url: https://github.com/freight-chain/rfc
 
