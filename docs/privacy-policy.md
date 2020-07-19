@@ -366,8 +366,8 @@ Clearing Corporation to your question or complaint, please contact the
 independent recourse mechanism listed below, and they will investigate and
 assist you free of charge.
 
-An independent dispute resolution mechanism is operated by the ****\_\_****. If
-the dispute concerned human resources personal information or information is
+An independent dispute resolution mechanism is operated by the \***\*\_\_\*\***.
+If the dispute concerned human resources personal information or information is
 obtained in connection to the employment relationship, we will cooperate with
 the competent EU, UK or Swiss data protection authorities and comply with the
 guidance of such authorities.
