@@ -4,7 +4,7 @@ Freight Trust & Clearing Corporation
 
 Freight Trust Network is a blockchain-based protocol that enables enterprises to network and transact with each other in a vendor neutral/data agnostic way. 
 
-> Freight Trust Network's the Supply Chains together, seamlessly.
+> Freight Trust Network's the worlds Supply Chains together, seamlessly.
 
 - Key Points
 	* [Rulebook](https://ft-docs.netlify.app)
@@ -12,6 +12,20 @@ Freight Trust Network is a blockchain-based protocol that enables enterprises to
 	* [Legal Framework](https://medium.com/freighttrust/accelerating-towards-legal-parity-a-theoretical-framework-for-designing-legal-smart-contracts-6bae3559d91c?source=collection_home---4------3-----------------------)
 	* [Smart Contracts](https://medium.com/freighttrust/application-of-traditional-contract-principles-to-smart-contracts-64cad84091bf?source=collection_home---4------1-----------------------)
 	* [Specifications](https://github.com/freight-trust/spec)
+
+## Overview 
+
+- Repositories: This list is ment to show the principle development, i.e. what is unique and built "in house" or considered "critical". 
+
+- Public Dates
+
+#### Network Connection Information
+
+You can access the [API through our dedicated service here.](https://api.besu.io)
+
+- Developers
+	[Developer Kit](https://github.com/freight-chain/besu-dev-kit)
+
 
 
 ### Partnerships
