@@ -2,25 +2,25 @@
 
 - [Freight Trust Network](#freight-trust-network)
 - [Abstract](#abstract)
-  * [Network Overview](#network-overview)
-  * [EDI Messages](#edi-messages)
-  * [Nodes](#nodes)
-    + [Network Nodes](#network-nodes)
-    + [Concensus Nodes](#concensus-nodes)
-  * [EDI Transactions](#edi-transactions)
-    + [Transaction Sets](#transaction-sets)
-    + [Loops](#loops)
-    + [Parsing](#parsing)
-    + [Example EDI](#example-edi)
-  * [Protocol](#protocol)
-  * [Burgess](#burgess)
-      - [Unit Concepts](#unit-concepts)
-  * [Blocks as `units of agreement`](#blocks-as--units-of-agreement-)
-    + [Facts](#facts)
-    + [Rules](#rules)
-  * [Rulebook](#rulebook)
-  * [Further Documentation](#further-documentation)
-  * [License](#license)
+  - [Network Overview](#network-overview)
+  - [EDI Messages](#edi-messages)
+  - [Nodes](#nodes)
+    - [Network Nodes](#network-nodes)
+    - [Concensus Nodes](#concensus-nodes)
+  - [EDI Transactions](#edi-transactions)
+    - [Transaction Sets](#transaction-sets)
+    - [Loops](#loops)
+    - [Parsing](#parsing)
+    - [Example EDI](#example-edi)
+  - [Protocol](#protocol)
+  - [Burgess](#burgess)
+    - [Unit Concepts](#unit-concepts)
+  - [Blocks as `units of agreement`](#blocks-as--units-of-agreement-)
+    - [Facts](#facts)
+    - [Rules](#rules)
+  - [Rulebook](#rulebook)
+  - [Further Documentation](#further-documentation)
+  - [License](#license)
 
 # Abstract
 
@@ -82,13 +82,13 @@ Validator
 In general concept terms, a Validator inspects the chain of custody to determine
 the content and validity of individual evidence supplied by custodians.
 
-
-## EDI Transactions 
+## EDI Transactions
 
 ASC X12 standards define commonly used EDI transactions. The standards define a
 structure/format for exchange of EDI data.
 
 ### Transaction Sets
+
 Each transaction type is called a "transaction set". The smallest data item in a
 transaction is called an "element". Groups of related elements form a data
 segment. A data element separator separates the elements within a segment. A
@@ -96,6 +96,7 @@ segment starts with a element which is called the segment ID, and ends with a
 segment terminator.
 
 ### Loops
+
 Logical groups of segments are called loops. There are some segments, which are
 used only to identify the beginning of a loop, these are called as control
 segments. A logical set of loops together form a "transaction set".
@@ -104,15 +105,15 @@ Similar transaction sets can be lumped together by enclosing them in data
 segments that are known as functional group headers and trailers. Functional
 groups are grouped together using interchange control headers and trailers.
 
-### Parsing 
-Unlike XML/HTML parsers which relies on "<" and ">" tags to determine
-start and end of data blocks, X12 transactions rely on pre-defined values
-(segment IDs) to indicate start and end of related data blocks (loops).
-Developing a parser that would work for all X12 transactions poses a challenge
-in this respect, as each transaction has its own hierarchy of loops and
-start/end indicators.
+### Parsing
 
-### Example EDI 
+Unlike XML/HTML parsers which relies on "<" and ">" tags to determine start and
+end of data blocks, X12 transactions rely on pre-defined values (segment IDs) to
+indicate start and end of related data blocks (loops). Developing a parser that
+would work for all X12 transactions poses a challenge in this respect, as each
+transaction has its own hierarchy of loops and start/end indicators.
+
+### Example EDI
 
 ```bash
 ISA*00*          *00*          *ZZ*SENDERISA      *ZZ*RECEIVERISA    *960807*1548*U*00401*000000020*0*T*>~
@@ -244,8 +245,6 @@ to Block1 followed by Block2 and to Block2 followed by Block3
 
 Rules are of the form `conclusion :- condition` (i.e. containing variables),
 with the Prolog-like (symbol) infix `":-"` corresponding to the above "if".
-
-
 
 This constitutes the extent of which RuleML is applied to the `TradeDocs`
 system, a basic primitive set for `rule-conditions`
