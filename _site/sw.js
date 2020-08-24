@@ -11,9 +11,9 @@ var filesToCache = [
   // images
   '/assets/img/octocat.png',
   // pages
-  '/public-information/2020/07/18/Roadmap.html','/example_page/',
+  '/public-information/2020/07/18/Protocol.html','/public-information/2020/07/18/Roadmap.html','/public-information,/roadmap,/announcements/2020/08/10/August-2020.html','/public-information/2020/08/24/Roadmap.html','/2020-08-10/','/example_page/','/protocol/','','','','','','','','','','','',
   // posts
-  '/public-information/2020/07/18/Roadmap.html',
+  '/public-information/2020/08/24/Roadmap.html','/public-information,/roadmap,/announcements/2020/08/10/August-2020.html','/public-information/2020/07/18/Roadmap.html','/public-information/2020/07/18/Protocol.html',
 ];
 
 self.addEventListener( 'install', function( e ) {
