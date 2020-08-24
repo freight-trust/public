@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>
+      
+        description: Security and Operations Responsible Disclosure Statement. - Freight Trust Public GitHub
+      
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+      <header role="banner">
+        <div class="wrap">
+          
+          <h1 class="site-title"><a class="title-link" href="/">Freight Trust Public GitHub</a></h1>
+        </div>
+      </header>
+
+      <div class="wrap content">
+
+        <aside>
+  <p class="intro">Protocol Overview</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      
+        
+          <li><a href="/./">Home</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-trust/spec">Protocol</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-trust">Corporate GitHub</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-chain">Community GitHub</a></li>
+        
+      
+        
+          <li><a href="https://t.ne/freighttrust">Telegram</a></li>
+        
+      
+    </ul>
+  </nav>
+</aside>
+
+        <section id="main" class="main-content" role="main">
+          <h2 class="page-title">description: Security and Operations Responsible Disclosure Statement.</h2>
+
+<p>#</p>
+
+<p>description: Security and Operations Responsible Disclosure Statement.</p>
+
+<p>At FreightTrust &amp; Clearing, security is a priority. But regardless of how much
+effort we put into system security, there may still be vulnerabilities present.
+If you discover a vulnerability, we want to know about it so we can take steps
+to address it as quickly as possible. We would like to ask you to help us better
+protect our clients and our systems.</p>
+
+<h1 id="defect-response">Defect Response</h1>
+
+<p>If you think you have discovered a security issue in any of the Hyperledger
+projects, we’d love to hear from you. We will take all security bugs seriously
+and if confirmed upon investigation we will patch it within a reasonable amount
+of time and release a public security bulletin discussing the impact and credit
+the discoverer.</p>
+
+<h2 id="security-bug-handling-process">Security Bug Handling Process</h2>
+
+<div class="important">
+
+- Attempting to Extort or otherwise force monetary compensation is not the best
+  way to receive a bug bounty. If the defect is legitmate we will provide
+  compensation so long as any report includes a remediation solution only.
+
+- We will NOT disclose to other parties, e.g. colleagues at your employer,
+  unless you wish us to.
+
+</div>
+
+<p>The process the Operations Security Team will follow when dealing with security
+bugs is detailed below:</p>
+
+<ol>
+  <li>The person discovering the issue, the reporter, reports the vulnerability
+privately to</li>
+</ol>
+
+<p><code class="language-plaintext highlighter-rouge">admin@freighttrust.com ops@freighttrust.com</code></p>
+
+<ol>
+  <li>
+    <p>Messages that do not relate to the reporting or managing of an undisclosed
+security vulnerability in our software are ignored and no further action is
+required.</p>
+  </li>
+  <li>
+    <p>The project team sends an e-mail to the original reporter to acknowledge the
+report.</p>
+  </li>
+  <li>
+    <p>The project team investigates report and either rejects it or accepts it.</p>
+  </li>
+  <li>
+    <p>If the report is rejected, the project team writes to the reporter to
+explain why.</p>
+  </li>
+  <li>
+    <p>If the report is accepted, the project team writes to the reporter to let
+them know it is accepted and that they are working on a fix.</p>
+  </li>
+  <li>
+    <p>The project team requests a CVE number from security at hyperledger.org by
+sending an e-mail with the subject “CVE request for…” and providing a short
+(one line) description of the vulnerability. Guidance is available to
+determine if a report requires multiple CVEs or if multiple reports should
+be merged under a single CVE.</p>
+  </li>
+  <li>
+    <p>The project team agrees the fix on their private list.</p>
+  </li>
+  <li>
+    <p>The project team provides the reporter with a copy of the fix and a draft
+vulnerability announcement for comment.</p>
+  </li>
+  <li>
+    <p>The project team agrees to the fix, the announcement and the release
+schedule with the reporter. For an example of an announcement see Tomcat’s
+announcement of CVE-2008-2370. The level of detail to include in the report
+is a matter of judgement. Generally, reports should contain enough
+information to enable people to assess the risk associated with the
+vulnerability for their system and no more. Steps to reproduce the
+vulnerability are not normally included.</p>
+  </li>
+  <li>
+    <p>The project team commits the fix. No reference should be made to the commit
+being related to a security vulnerability.</p>
+  </li>
+  <li>
+    <p>The project team creates a release that includes the fix.</p>
+  </li>
+  <li>
+    <p>The project team announces the release. The release announcement should be
+sent to the usual mailing lists (typically the project’s user list, dev
+list, announce list and the Hyperledger announce list).</p>
+  </li>
+  <li>
+    <p>The project team announces the vulnerability. The vulnerability announcement
+should be sent after the release announcement to the following destinations:</p>
+
+    <ol>
+      <li>
+        <p>the same destinations as the release announcement</p>
+      </li>
+      <li>
+        <p>the vulnerability reporter</p>
+      </li>
+      <li>
+        <p>our github.com/freight-chain/forum or our disqus forums.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h2 id="format">Format</h2>
+
+<p>We utilize MITRE Corporations ATT\&amp;CK and CVE Process
+<a href="https://cveform.mitre.org/">CVE Form, Mitre.org</a></p>
+
+<p>Submissions should be in the following format</p>
+
+<div class="informalexample">
+
+\[CVEID\]:CVE-2017-5648 \[PRODUCT\]:Hyperledger Besu \[VERSION\]:1.3.8
+\[PROBLEMTYPE\]:Information Disclosure
+\[REFERENCES\]:https://github.com/hyperledger/besu \[DESCRIPTION\]: Description
+here
+
+</div>
+
+
+        </section>
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+        <div class="wrap">
+          <p>This project is maintained by <a href="http://freighttrust.com">FreightTrust & Clearing Corporation</a>.</p>
+
+          <p>Hosted on <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+        </div><!--/.wrap -->
+      </footer>
+    </div> <!-- /.container -->
+    
+    </body>
+</html>

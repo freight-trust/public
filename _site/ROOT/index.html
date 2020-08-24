@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <title>
+      
+        Freight Trust Network - Freight Trust Public GitHub
+      
+    </title>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/assets/css/normalize.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/syntax.css">
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+      <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+  </head>
+  <body>
+    <div class="container">
+      <header role="banner">
+        <div class="wrap">
+          
+          <h1 class="site-title"><a class="title-link" href="/">Freight Trust Public GitHub</a></h1>
+        </div>
+      </header>
+
+      <div class="wrap content">
+
+        <aside>
+  <p class="intro">Protocol Overview</p>
+  <a class="skip-link visuallyhidden focusable" href="#main">Skip to Main Content</a>
+  <nav class="sidebar-nav" role="navigation">
+    <ul>
+      
+        
+          <li><a href="/./">Home</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-trust/spec">Protocol</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-trust">Corporate GitHub</a></li>
+        
+      
+        
+          <li><a href="https://github.com/freight-chain">Community GitHub</a></li>
+        
+      
+        
+          <li><a href="https://t.ne/freighttrust">Telegram</a></li>
+        
+      
+    </ul>
+  </nav>
+</aside>
+
+        <section id="main" class="main-content" role="main">
+          <h2 class="page-title">Freight Trust Network</h2>
+
+<h1 id="freight-trust-network">Freight Trust Network</h1>
+
+<ul>
+  <li><a href="#freight-trust-network">Freight Trust Network</a></li>
+  <li><a href="#abstract">Abstract</a>
+    <ul>
+      <li><a href="#network-overview">Network Overview</a></li>
+      <li><a href="#edi-messages">EDI Messages</a></li>
+      <li><a href="#nodes">Nodes</a>
+        <ul>
+          <li><a href="#network-nodes">Network Nodes</a></li>
+          <li><a href="#concensus-nodes">Concensus Nodes</a></li>
+        </ul>
+      </li>
+      <li><a href="#edi-transactions">EDI Transactions</a>
+        <ul>
+          <li><a href="#transaction-sets">Transaction Sets</a></li>
+          <li><a href="#loops">Loops</a></li>
+          <li><a href="#parsing">Parsing</a></li>
+          <li><a href="#example-edi">Example EDI</a></li>
+        </ul>
+      </li>
+      <li><a href="#protocol">Protocol</a></li>
+      <li><a href="#burgess">Burgess</a>
+        <ul>
+          <li><a href="#unit-concepts">Unit Concepts</a></li>
+        </ul>
+      </li>
+      <li><a href="#blocks-as--units-of-agreement-">Blocks as <code class="language-plaintext highlighter-rouge">units of agreement</code></a>
+        <ul>
+          <li><a href="#facts">Facts</a></li>
+          <li><a href="#rules">Rules</a></li>
+        </ul>
+      </li>
+      <li><a href="#rulebook">Rulebook</a></li>
+      <li><a href="#further-documentation">Further Documentation</a></li>
+      <li><a href="#license">License</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="abstract">Abstract</h1>
+
+<p>Business A and Business B have a <code class="language-plaintext highlighter-rouge">transaction</code>, in this example the transaction
+is a shippment of freight. This diagram shows at a high level how we facilitate
+these business <code class="language-plaintext highlighter-rouge">transactions</code> in a distributed, fault tolerant network utilziing
+hyperledger besu. Censorship resistance and high availability are some of the
+more important aspects of utilizing a blockchain network, in addition to
+providing for a provably electronically unique piece of data (i.e. this is why
+cryptocurrencies work in the first place).</p>
+
+<p><img src="/ROOT/images/high-level.png" alt="" /></p>
+
+<h2 id="network-overview">Network Overview</h2>
+
+<p><img src="/ROOT/images/ft-network-besu.png" alt="" /></p>
+
+<h2 id="edi-messages">EDI Messages</h2>
+
+<blockquote>
+  <p>Note EDI Messages are NOT $EDI Tokens. $EDI Tokens represent the unit of
+account for Units of Agreement and Units of Execution (i.e. think of it just
+as you would think of gwei for ethereum, a fixed unit of cost per byte for
+transacting on the network.)</p>
+</blockquote>
+
+<p>Charging on a <code class="language-plaintext highlighter-rouge">per byte</code> basis has been and continutes to be the basis of all
+transactional cost models especially EDI and XML messages which provide an
+incentive for users not to spam the network with unnecessarily large messages.</p>
+
+<p><img src="/ROOT/images/EDI_Components.png" alt="" /></p>
+
+<h2 id="nodes">Nodes</h2>
+
+<p>There are 5 different classes of nodes, with 2 groups.</p>
+
+<ul>
+  <li>Network Nodes</li>
+  <li>Concensus Nodes</li>
+</ul>
+
+<h3 id="network-nodes">Network Nodes</h3>
+
+<p><img src="/ROOT/images/besu-redis-componets.png" alt="" /></p>
+
+<p>Besu-tx: Handling of local transaction pool.</p>
+
+<p>Besu-sync: Handling of blockchain synchronisation through Ethereum P2P network.</p>
+
+<p>Besu-query: Handling of database queries.</p>
+
+<p><img src="/ROOT/images/network-component-besu.png" alt="" /></p>
+
+<h3 id="concensus-nodes">Concensus Nodes</h3>
+
+<p>Sealer</p>
+
+<p>In general concept terms, a Sealer adds its testimony (assertion of
+authentication assessment) and proof of custody to the chain of custody.</p>
+
+<p>Validator</p>
+
+<p>In general concept terms, a Validator inspects the chain of custody to determine
+the content and validity of individual evidence supplied by custodians.</p>
+
+<h2 id="edi-transactions">EDI Transactions</h2>
+
+<p>ASC X12 standards define commonly used EDI transactions. The standards define a
+structure/format for exchange of EDI data.</p>
+
+<h3 id="transaction-sets">Transaction Sets</h3>
+
+<p>Each transaction type is called a “transaction set”. The smallest data item in a
+transaction is called an “element”. Groups of related elements form a data
+segment. A data element separator separates the elements within a segment. A
+segment starts with a element which is called the segment ID, and ends with a
+segment terminator.</p>
+
+<h3 id="loops">Loops</h3>
+
+<p>Logical groups of segments are called loops. There are some segments, which are
+used only to identify the beginning of a loop, these are called as control
+segments. A logical set of loops together form a “transaction set”.</p>
+
+<p>Similar transaction sets can be lumped together by enclosing them in data
+segments that are known as functional group headers and trailers. Functional
+groups are grouped together using interchange control headers and trailers.</p>
+
+<h3 id="parsing">Parsing</h3>
+
+<p>Unlike XML/HTML parsers which relies on “&lt;” and “&gt;” tags to determine start and
+end of data blocks, X12 transactions rely on pre-defined values (segment IDs) to
+indicate start and end of related data blocks (loops). Developing a parser that
+would work for all X12 transactions poses a challenge in this respect, as each
+transaction has its own hierarchy of loops and start/end indicators.</p>
+
+<h3 id="example-edi">Example EDI</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ISA<span class="k">*</span>00<span class="k">*</span>          <span class="k">*</span>00<span class="k">*</span>          <span class="k">*</span>ZZ<span class="k">*</span>SENDERISA      <span class="k">*</span>ZZ<span class="k">*</span>RECEIVERISA    <span class="k">*</span>960807<span class="k">*</span>1548<span class="k">*</span>U<span class="k">*</span>00401<span class="k">*</span>000000020<span class="k">*</span>0<span class="k">*</span>T<span class="k">*</span><span class="o">&gt;</span>~
+GS<span class="k">*</span>IN<span class="k">*</span>SENDERDEPT<span class="k">*</span>007326879<span class="k">*</span>19960807<span class="k">*</span>1548<span class="k">*</span>1<span class="k">*</span>X<span class="k">*</span>004010~
+ST<span class="k">*</span>810<span class="k">*</span>000000001~
+BIG<span class="k">*</span>19971211<span class="k">*</span>00001<span class="k">**</span>A99999-01~
+N1<span class="k">*</span>ST<span class="k">*</span>BUYSNACKS PORT<span class="k">*</span>9<span class="k">*</span>1223334445~
+N3<span class="k">*</span>1000 N. SAMPLE HIGHWAY~
+N4<span class="k">*</span>ATHENS<span class="k">*</span>GA<span class="k">*</span>30603~
+N1<span class="k">*</span>BT<span class="k">*</span>BUYSNACKS<span class="k">*</span>9<span class="k">*</span>1223334444~
+N3<span class="k">*</span>P.O. BOX 0000~
+N4<span class="k">*</span>TEMPLE<span class="k">*</span>TX<span class="k">*</span>76503~
+N1<span class="k">*</span>RE<span class="k">*</span>FOODSELLER<span class="k">*</span>9<span class="k">*</span>12345QQQQ~
+N3<span class="k">*</span>P.O. BOX 222222~
+N4<span class="k">*</span>DALLAS<span class="k">*</span>TX<span class="k">*</span>723224444~
+ITD<span class="k">*</span>01<span class="k">*</span>3<span class="k">*</span>1.000<span class="k">**</span>15<span class="k">**</span>16<span class="k">*****</span>1/15 NET 30~
+FOB<span class="k">*</span>PP~
+IT1<span class="k">**</span>16<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840022222~
+PID<span class="k">*</span>F<span class="k">****</span>CRUNCHY CHIPS LSS~
+IT1<span class="k">**</span>13<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840033333~
+PID<span class="k">*</span>F<span class="k">****</span>NACHO CHIPS LSS~
+IT1<span class="k">**</span>32<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840044444~
+PID<span class="k">*</span>F<span class="k">****</span>POTATO CHIPS~
+IT1<span class="k">**</span>51<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840055555~
+PID<span class="k">*</span>F<span class="k">****</span>CORN CHIPS~
+IT1<span class="k">**</span>9<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840066666~
+PID<span class="k">*</span>F<span class="k">****</span>BBQ CHIPS~
+IT1<span class="k">**</span>85<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840077777~
+PID<span class="k">*</span>F<span class="k">****</span>GREAT BIG CHIPS LSS~
+IT1<span class="k">**</span>1<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840088888~
+PID<span class="k">*</span>F<span class="k">****</span>MINI CHIPS LSS~
+TDS<span class="k">*</span>255438~
+CAD<span class="k">*****</span>FREEFORM~
+ISS<span class="k">*</span>207<span class="k">*</span>CA~
+CTT<span class="k">*</span>7~
+SE<span class="k">*</span>32<span class="k">*</span>000000001~
+ST<span class="k">*</span>810<span class="k">*</span>000000002~
+BIG<span class="k">*</span>19971215<span class="k">*</span>00001<span class="k">**</span>A99999-04~
+N1<span class="k">*</span>ST<span class="k">*</span>BUYER CHIPS<span class="k">*</span>9<span class="k">*</span>1223334445~
+N3<span class="k">*</span>1234 N. BUYER HIGHWAY~
+N4<span class="k">*</span>LOS ANGELES<span class="k">*</span>CA<span class="k">*</span>30603~
+N1<span class="k">*</span>BT<span class="k">*</span>BUYER CHIPS<span class="k">*</span>9<span class="k">*</span>1223334444~
+N3<span class="k">*</span>P.O. BOX 123400~
+N4<span class="k">*</span>CARSON<span class="k">*</span>CA<span class="k">*</span>76503~
+N1<span class="k">*</span>RE<span class="k">*</span>FOODSELLER<span class="k">*</span>9<span class="k">*</span>12345QQQQ~
+N3<span class="k">*</span>P.O. BOX 222222~
+N4<span class="k">*</span>DALLAS<span class="k">*</span>TX<span class="k">*</span>723224444~
+ITD<span class="k">*</span>01<span class="k">*</span>3<span class="k">*</span>1.000<span class="k">**</span>15<span class="k">**</span>16<span class="k">*****</span>1/15 NET 30~
+FOB<span class="k">*</span>PP~
+IT1<span class="k">**</span>50<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840022222~
+PID<span class="k">*</span>F<span class="k">****</span>CRUNCHY CHIPS LSS~
+IT1<span class="k">**</span>100<span class="k">*</span>CA<span class="k">*</span>12.34<span class="k">**</span>UA<span class="k">*</span>002840066666~
+PID<span class="k">*</span>F<span class="k">****</span>BBQ CHIPS~
+TDS<span class="k">*</span>255438~
+CAD<span class="k">*****</span>FREEFORM~
+ISS<span class="k">*</span>207<span class="k">*</span>CA~
+CTT<span class="k">*</span>2~
+SE<span class="k">*</span>22<span class="k">*</span>000000002~
+GE<span class="k">*</span>2<span class="k">*</span>1~
+GS<span class="k">*</span>PO<span class="k">*</span>9994935230<span class="k">*</span>5566778899<span class="k">*</span>020906<span class="k">*</span>0809<span class="k">*</span>165<span class="k">*</span>X<span class="k">*</span>003010~
+ST<span class="k">*</span>850<span class="k">*</span>000191240~
+BEG<span class="k">*</span>00<span class="k">*</span>NE<span class="k">*</span>S115921858<span class="k">*</span>1017760<span class="k">*</span>040317~
+REF<span class="k">*</span>PD<span class="k">*</span>040209~
+REF<span class="k">*</span>MU<span class="k">*</span>0.3492~
+REF<span class="k">*</span>WH<span class="k">*</span>24~
+FOB<span class="k">*</span>CC~
+TD5<span class="k">*****</span>WORLDWIDE FREIGHT FLEET~
+N1<span class="k">*</span>BY<span class="k">*</span>SHIPPING GROUP, INC.<span class="k">*</span>1<span class="k">*</span>999999999~
+N1<span class="k">*</span>ST<span class="k">*</span>CARGO LIMITED <span class="c">#112*92~</span>
+N3<span class="k">*</span>3000 LONG BEACH DRIVE~
+N4<span class="k">*</span>SAN PEDRO<span class="k">*</span>CA<span class="k">*</span>83308~
+PO1<span class="k">*</span>1<span class="k">*</span>150<span class="k">*</span>EA<span class="k">***</span>IN<span class="k">*</span>02006~
+PO1<span class="k">*</span>2<span class="k">*</span>50<span class="k">*</span>EA<span class="k">***</span>IN<span class="k">*</span>02008~
+PO1<span class="k">*</span>3<span class="k">*</span>25<span class="k">*</span>EA<span class="k">***</span>IN<span class="k">*</span>01019~
+PO1<span class="k">*</span>4<span class="k">*</span>25<span class="k">*</span>EA<span class="k">***</span>IN<span class="k">*</span>01220~
+CTT<span class="k">*</span>4<span class="k">*</span>250~
+SE<span class="k">*</span>17<span class="k">*</span>000191240~
+GE<span class="k">*</span>1<span class="k">*</span>165~
+IEA<span class="k">*</span>2<span class="k">*</span>000000020~
+</code></pre></div></div>
+
+<h2 id="protocol">Protocol</h2>
+
+<p><img src="/ROOT/images/protocol.png" alt="" /></p>
+
+<h2 id="burgess">Burgess</h2>
+
+<p>Burgess is the collection of rules and dogma. You can ignore this section if you
+are not interested in the <code class="language-plaintext highlighter-rouge">legal</code> aspects of our implementation.
+<a href="https://medium.com/freighttrust">We suggest visting the blog to find out more first</a></p>
+
+<h4 id="unit-concepts">Unit Concepts</h4>
+
+<ul>
+  <li>Units of Execution</li>
+  <li>Units of Agreement</li>
+  <li>Units of Afferent</li>
+  <li>Units of Efferent</li>
+  <li>
+    <p>Units of Lexigram</p>
+  </li>
+  <li>Controlled Natural Language = Jurisdictional Grammar (see
+<a href="https://github.com/freight-trust/burgess">Burgess</a> )</li>
+  <li>Afferent = Towards</li>
+  <li>Efferent = Away</li>
+</ul>
+
+<h2 id="blocks-as-units-of-agreement">Blocks as <code class="language-plaintext highlighter-rouge">units of agreement</code></h2>
+
+<p>A couple of specific block linkages are stated as facts. Two general principles
+of block chaining based on such linkages are stated as “conclusion if condition”
+rules.</p>
+
+<blockquote>
+  <p>(The diagrams’ color coding is extended to the symbolic form by using green
+for facts and their rule-condition counterparts while using red for rule
+conclusions and the recursive rule-condition counterpart.)</p>
+</blockquote>
+
+<h3 id="facts">Facts</h3>
+
+<ul>
+  <li>“Block1 links to Block2.”</li>
+  <li>“Block2 links to Block3.”</li>
+</ul>
+
+<h3 id="rules">Rules</h3>
+
+<ul>
+  <li>“x chains to y if x links to y.”</li>
+  <li>“x chains to z if x links to y and y chains to z.”</li>
+</ul>
+
+<p>Facts are <em>primitives</em> (i.e. not containing variables) that apply a <code class="language-plaintext highlighter-rouge">predicate</code>
+to <code class="language-plaintext highlighter-rouge">arguments</code></p>
+
+<p>to Block1 followed by Block2 and to Block2 followed by Block3</p>
+
+<p>Rules are of the form <code class="language-plaintext highlighter-rouge">conclusion :- condition</code> (i.e. containing variables),
+with the Prolog-like (symbol) infix <code class="language-plaintext highlighter-rouge">":-"</code> corresponding to the above “if”.</p>
+
+<p>This constitutes the extent of which RuleML is applied to the <code class="language-plaintext highlighter-rouge">TradeDocs</code>
+system, a basic primitive set for <code class="language-plaintext highlighter-rouge">rule-conditions</code></p>
+
+<h2 id="rulebook">Rulebook</h2>
+
+<p><a href="https://ft-docs.netlify.app">see full omnibus</a></p>
+
+<h2 id="further-documentation">Further Documentation</h2>
+
+<p><a href="https://ft-docs.netlify.app">see full omnibus</a></p>
+
+<h2 id="license">License</h2>
+
+<p>Mozilla Public License 2.0</p>
+
+
+        </section>
+
+      </div><!-- /.wrap content -->
+
+      <footer role="contentinfo">
+        <div class="wrap">
+          <p>This project is maintained by <a href="http://freighttrust.com">FreightTrust & Clearing Corporation</a>.</p>
+
+          <p>Hosted on <a href="http://pages.github.com/">GitHub Pages</a>.</p>
+        </div><!--/.wrap -->
+      </footer>
+    </div> <!-- /.container -->
+    
+    </body>
+</html>
